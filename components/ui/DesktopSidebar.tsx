@@ -1,0 +1,24 @@
+// components/ui/DesktopSidebar.tsx
+import { logout } from "@/app/(auth)/actions";
+import { NavLinks } from "./NavLinks";
+import Link from "next/link";
+
+export function DesktopSidebar() {
+  return (
+    <div className="hidden lg:flex flex-col h-full sticky top-0 pt-8">
+      <Link href="/" className="text-xl font-bold text-primary font-mono tracking-wider flex-grow">
+          Vigri
+      </Link>
+      <hr></hr>
+      <NavLinks />
+      <form action={logout} className="mt-6">
+        <button
+          type="submit"
+          className="w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+        >
+          Log Out
+        </button>
+      </form>
+    </div>
+  );
+}
