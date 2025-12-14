@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../app/globals.css";
+import "./globals.css";
 import { createClient } from "@/lib/supabase/server";
 import { logout } from "./(auth)/actions";
 import { MobileNavbar } from "@/app/components/ui/MobileNavbar";
