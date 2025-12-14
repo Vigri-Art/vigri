@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "cypress:open" : "cypress open"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
@@ -22,6 +23,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cypress": "^15.7.1",
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
     "tailwindcss": "^4",
