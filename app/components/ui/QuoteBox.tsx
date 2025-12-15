@@ -3,7 +3,7 @@ import { Quote } from "lucide-react";
 
 function QuoteBox({ quote, attribution }: {quote: string, attribution: string}) {
   return (
-    <div className="flex w-full flex-col gap-6">
+    <div className="my-8 flex w-full flex-col gap-6">
         <Item variant="outline">
             <ItemMedia variant="icon">
                 <Quote />
