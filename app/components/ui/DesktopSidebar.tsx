@@ -2,6 +2,7 @@
 import { logout } from "@/app/(auth)/actions";
 import { NavLinks } from "./NavLinks";
 import Link from "next/link";
+import NavSwapCard from "./NavSwapCard";
 
 export function DesktopSidebar() {
   return (
@@ -10,6 +11,7 @@ export function DesktopSidebar() {
           Vigri
       </Link>
       <hr></hr>
+      <NavSwapCard />
       <NavLinks />
       <form action={logout} className="mt-6">
         <button

@@ -42,7 +42,7 @@ export default async function RootLayout({
           <main className="max-w-7xl mx-auto px-4"> 
             
             {/* 2. Grid Layout for Desktop (Sidebar + Content) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-8 lg:pt-0"> 
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-8 lg:pt-8"> 
               
               {/* Sidebar Slot - ONLY visible on LG screens and above (lg:block) */}
               <div className="lg:col-span-3">
