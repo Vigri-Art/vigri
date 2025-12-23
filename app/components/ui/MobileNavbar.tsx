@@ -6,6 +6,7 @@ import { Button } from "./button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./sheet";
 import { NavLinks } from "./NavLinks";
 import { logout } from "@/app/(auth)/actions";
+import NavSwapCard from "./NavSwapCard";
 
 export function MobileNavbar() {
   return (
@@ -36,14 +37,18 @@ export function MobileNavbar() {
             <SheetTitle>Navigation</SheetTitle>
           </SheetHeader>
           <div className="flex flex-col py-4 h-full">
+            <NavSwapCard />
             <NavLinks />
+            <Button>
+              <Link href="/support"></Link>
+            </Button>
             <form action={logout} className="mt-auto pt-4 border-t">
-              <button
+              <Button
                 type="submit"
                 className="w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
               >
                 Log Out
-              </button>
+              </Button>
             </form>
           </div>
         </SheetContent>

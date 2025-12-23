@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { BarChartIcon, CalendarIcon, HomeIcon, ListIcon, MessageCircleIcon, UserIcon } from "lucide-react";
+import { BarChartIcon, CalendarIcon, HelpCircle, HomeIcon, ListIcon, MessageCircleIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./button";
 
@@ -10,6 +10,7 @@ const links = [
     { href:"/messages", label:"Messages", icon:MessageCircleIcon },
     { href:"/analytics", label:"Analytics", icon:BarChartIcon },
     { href:"/profile", label:"Profile", icon:UserIcon },
+    { href:"/support", label:"Get Help", icon:HelpCircle }
 ]
 
 export async function NavLinks() {
