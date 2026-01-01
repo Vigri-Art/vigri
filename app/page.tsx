@@ -14,6 +14,16 @@ export default async function Home() {
   
   const { data : { user }, } = await supabase.auth.getUser();
 
+  const { data: profile, error: profileError } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('user_id', user?.id)
+      .single();
+
+  if (profileError) {
+    return <div>Something went wrong with your profile.</div>
+  }
+
   // TO-DO: Get Stats for HomePage, likely needs to be async
   const statsData: StatDisplayElement[] = [
     {
@@ -36,7 +46,7 @@ export default async function Home() {
 
   return (
     <div className="mx-auto">
-      <h1 className="mb-8 text-2xl font-bold">Welcome Back, $$USER$$</h1>
+      <h1 className="mb-8 text-2xl font-bold">{`Welcome Back, ${profile.display_name}`}</h1>
       <p>Here's what's happening with your creative work today:</p>
       <QuoteBox quote={DEFAULT_QUOTE} attribution={DEFAULT_ATTRIBUTION} />
       <StatDisplay stats={statsData} />

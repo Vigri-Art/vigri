@@ -10,6 +10,7 @@ export default function SignupPage() {
         <>
             <CardHeader>
                 <h2>Sign up for access to events.</h2>
+                <p>Already have an account? <Link className="text-blue-500 hover:text-blue-600 underline" href="/login">Log in here.</Link></p>
             </CardHeader>
             <CardContent>
                 <form action={signup}>
@@ -24,7 +25,6 @@ export default function SignupPage() {
                         </Field>
                     </FieldGroup>
                     <Button type="submit">Sign Up</Button>
-                    <p>Already have an account? <Link className="text-blue-500 hover:text-blue-600 underline" href="/login">Log in here.</Link></p>
                 </form>
             </CardContent>
         </>

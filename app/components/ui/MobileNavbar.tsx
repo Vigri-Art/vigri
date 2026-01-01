@@ -5,14 +5,15 @@ import Link from "next/link";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./sheet";
 import { NavLinks } from "./NavLinks";
 import { logout } from "@/app/(auth)/actions";
-import NavSwapCard from "./NavSwapCard";
 // import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
+import { User } from "@supabase/supabase-js";
+import { ProfileCard } from "./ProfileCard";
 
-export function MobileNavbar() {
+export function MobileNavbar({ user, profile }: {user: User, profile: any}) {
   return (
     // The main container for the mobile top bar
-    <div className="lg:hidden flex items-center h-16 border-b bg-background/95 sticky top-0 z-50 px-4">
+    <div className="flex items-center h-16 border-b bg-background/95 sticky top-0 z-50 px-4">
       
       {/*
         --- ADJUSTMENT 2 & 3: Order and Justification ---
@@ -38,7 +39,7 @@ export function MobileNavbar() {
             <SheetTitle>Navigation</SheetTitle>
           </SheetHeader>
           <div className="flex flex-col py-4 h-full">
-            <NavSwapCard />
+            <ProfileCard user={user} profile={profile}/>
             <NavLinks />
             <form action={logout} className="mt-auto pt-4 border-t">
               <Button

@@ -25,15 +25,18 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user }, } = await supabase.auth.getUser();
 
-  // Fetch profile if user exists
-  let profile = null;
+  const { data: profile, error: profileError } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('user_id', user?.id)
+      .single();
 
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NavWrapper user={user}>{children}</NavWrapper>
+        <NavWrapper user={user} profile={profile}>{children}</NavWrapper>
       </body>
     </html>
   );

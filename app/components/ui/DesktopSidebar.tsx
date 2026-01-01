@@ -2,15 +2,16 @@
 import { logout } from "@/app/(auth)/actions";
 import { NavLinks } from "./NavLinks";
 import Link from "next/link";
-import NavSwapCard from "./NavSwapCard";
+import { User } from "@supabase/supabase-js";
+import { ProfileCard } from "./ProfileCard";
 
-export function DesktopSidebar() {
+export function DesktopSidebar({ user, profile }: {user: User, profile: any}) {
   return (
-    <div className="hidden lg:flex flex-col h-full sticky top-0 pt-8">
+    <div className="flex flex-col h-full sticky top-0 pt-8">
       <Link href="/" className="text-xl font-bold text-primary font-mono tracking-wider">
           Vigri
       </Link>
-      <NavSwapCard />
+      <ProfileCard user={user} profile={profile}/>
       <NavLinks />
       <form action={logout} className="mt-6">
         <button
