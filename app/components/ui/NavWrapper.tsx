@@ -25,7 +25,7 @@ export function NavWrapper({ children, user }: NavWrapperProps) {
     return (
       <div className="min-h-screen">
         <main className="flex px-4 h-screen align-middle"> 
-          <div className="lg:w-2/3 m:w-1/2 sm:w-2/3 m-auto grid grid-cols-1 lg:grid-cols-12 gap-6 pt-8 lg:pt-8"> 
+          <div className="lg:w-2/3 m:w-1/2 sm:w-2/3 m-auto max-w-lg grid grid-cols-1 lg:grid-cols-12 gap-6 pt-8 lg:pt-8"> 
             <div className="lg:col-span-12">
               {children}
             </div>
