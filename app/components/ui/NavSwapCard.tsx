@@ -1,13 +1,9 @@
 import { Card } from "@/components/ui/card"
-import { Button } from "./button"
 import { RefreshCcw } from "lucide-react"
-import { createClient } from "@/lib/supabase/server"
+// import { createClient } from "@/lib/supabase/server"
+import { Button } from "@/components/ui/button";
 
-async function NavSwapCard() {
-
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser(); 
-
+function NavSwapCard() {
     return (
         <Card className="max-h-48">
             <p>User</p>

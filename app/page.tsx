@@ -1,11 +1,9 @@
-
 import { createClient } from "@/lib/supabase/server";
-import { logout } from "./(auth)/actions";
 import QuoteBox from "./components/ui/QuoteBox";
 import StatDisplay, { StatDisplayProps } from "./components/ui/StatDisplay";
 import { StatDisplayElement } from "./components/ui/StatDisplayCard";
 import { ButtonGroup } from "@/components/ui/button-group";
-import { Button } from "./components/ui/button";
+import { Button } from "@/components/ui/button";
 
 const DEFAULT_QUOTE = "That brain of mine is something more than merely mortal; as time will show."
 const DEFAULT_ATTRIBUTION = "Ada Lovelace, Countess"

@@ -2,21 +2,14 @@
 
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { Button } from "./button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./sheet";
 import { NavLinks } from "./NavLinks";
 import { logout } from "@/app/(auth)/actions";
 import NavSwapCard from "./NavSwapCard";
-import { createClient } from "@/lib/supabase/server";
+// import { createClient } from "@/lib/supabase/server";
+import { Button } from "@/components/ui/button";
 
-export async function MobileNavbar() {
-  const supabase = await createClient();
-    
-  const { data : { user }, } = await supabase.auth.getUser();
-
-  if (!user) {
-    return <div></div>
-  }
+export function MobileNavbar() {
   return (
     // The main container for the mobile top bar
     <div className="lg:hidden flex items-center h-16 border-b bg-background/95 sticky top-0 z-50 px-4">

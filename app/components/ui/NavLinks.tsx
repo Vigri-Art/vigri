@@ -1,7 +1,7 @@
-import { createClient } from "@/lib/supabase/server";
+import { Button } from "@/components/ui/button";
+// import { createClient } from "@/lib/supabase/server";
 import { BarChartIcon, CalendarIcon, HelpCircle, HomeIcon, ListIcon, MessageCircleIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
-import { Button } from "./button";
 
 const links = [
     { href:"/", label:"Home", icon:HomeIcon },
@@ -13,14 +13,7 @@ const links = [
     { href:"/support", label:"Get Help", icon:HelpCircle }
 ]
 
-export async function NavLinks() {
-    const supabase = await createClient();
-    const { data : { user }, } = await supabase.auth.getUser();
-
-    if (!user) {
-        return <div>Log in to view navigation.</div>
-    }
-
+export function NavLinks() {
     return (
         <div className="flex flex-col space-y-1">
             {links.map((link) => (

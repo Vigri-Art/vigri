@@ -12,14 +12,12 @@ export default function UpdatePasswordPage() {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const router = useRouter();
-    const supabase = createClient(); // The client needs to be initialized here
+    const supabase = createClient();
 
     const handleUpdate = async (e: React.FormEvent) => {
         e.preventDefault();
         setMessage('Updating password...');
 
-        // 🛑 The user is temporarily authenticated because they clicked the link.
-        // We can now call updateUser() which uses the current session.
         const { error } = await supabase.auth.updateUser({
             password: password
         });

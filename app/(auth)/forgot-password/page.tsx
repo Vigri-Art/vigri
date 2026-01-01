@@ -9,7 +9,7 @@ export default function ForgotPasswordPage() {
         <>
             <CardHeader>
                 <h2>Forgot Your Password?</h2>
-                <p>Enter your email address and we'll send you a password reset link.</p>
+                <p className="font-light">Enter your email address and we'll send you a password reset link.</p>
             </CardHeader>
             <CardContent>
                 <form action={resetPasswordRequest}>

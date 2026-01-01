@@ -7,18 +7,19 @@ import { createClient } from '@/lib/supabase/server';
 export async function signup(formData: FormData) {
     const supabase = await createClient();
 
-    const data = {
-        email: formData.get('email') as string,
-        password: formData.get('password') as string,
-    }
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
-    const { error } = await supabase.auth.signUp(data)
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+        email,
+        password
+    })
 
-    if (error) {
-        console.error("SUPABASE SIGNIN ERROR: ", error.message)
-        redirect(`/error?message=${encodeURIComponent(error.message)}`);
+    if (authError || !authData.user) {
+        console.error("SUPABASE SIGNIN ERROR: ", authError?.message)
+        redirect(`/error?message=${encodeURIComponent(authError?.message || "Authentication failed.")}`);
     }
 
     revalidatePath('/', 'layout');
-    redirect('/')
+    redirect('/check-email')
 }
