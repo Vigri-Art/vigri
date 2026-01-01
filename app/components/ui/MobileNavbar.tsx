@@ -7,8 +7,16 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./sh
 import { NavLinks } from "./NavLinks";
 import { logout } from "@/app/(auth)/actions";
 import NavSwapCard from "./NavSwapCard";
+import { createClient } from "@/lib/supabase/server";
 
-export function MobileNavbar() {
+export async function MobileNavbar() {
+  const supabase = await createClient();
+    
+  const { data : { user }, } = await supabase.auth.getUser();
+
+  if (!user) {
+    return <div></div>
+  }
   return (
     // The main container for the mobile top bar
     <div className="lg:hidden flex items-center h-16 border-b bg-background/95 sticky top-0 z-50 px-4">
@@ -39,9 +47,6 @@ export function MobileNavbar() {
           <div className="flex flex-col py-4 h-full">
             <NavSwapCard />
             <NavLinks />
-            <Button>
-              <Link href="/support"></Link>
-            </Button>
             <form action={logout} className="mt-auto pt-4 border-t">
               <Button
                 type="submit"

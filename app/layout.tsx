@@ -29,6 +29,24 @@ export default async function RootLayout({
   const supabase = await createClient();
 
   const { data : { user }, } = await supabase.auth.getUser();
+
+  if (!user) {
+    return <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <div className="min-h-screen">
+          <main className="flex px-4 h-screen align-middle"> 
+            <div className="lg:w-1/3 sm:w-1/2 m-auto grid grid-cols-1 lg:grid-cols-12 gap-6 pt-8 lg:pt-8"> 
+              <div className="lg:col-span-12">
+                {children}
+              </div>
+            </div>
+          </main>
+        </div>
+      </body>
+    </html>
+  }
   
   return (
     <html lang="en">
@@ -39,10 +57,10 @@ export default async function RootLayout({
           {/* 1. Mobile Top Bar with Sheet Trigger */}
           <MobileNavbar /> 
 
-          <main className="max-w-7xl mx-auto px-4"> 
+          <main className="flex max-w-7xl mx-auto px-4 h-screen align-middle"> 
             
             {/* 2. Grid Layout for Desktop (Sidebar + Content) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-8 lg:pt-8"> 
+            <div className="mx-auto my-auto grid grid-cols-1 lg:grid-cols-12 gap-6 pt-8 lg:pt-8"> 
               
               {/* Sidebar Slot - ONLY visible on LG screens and above (lg:block) */}
               <div className="lg:col-span-3">
@@ -52,7 +70,7 @@ export default async function RootLayout({
               </div>
 
               {/* Main Content Slot - Takes full width on mobile, 9 columns on desktop */}
-              <div className="lg:col-span-9">
+              <div className="mx-auto lg:col-span-9">
                 {children}
               </div>
             </div>

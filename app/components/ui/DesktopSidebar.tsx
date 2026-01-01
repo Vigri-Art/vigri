@@ -3,8 +3,17 @@ import { logout } from "@/app/(auth)/actions";
 import { NavLinks } from "./NavLinks";
 import Link from "next/link";
 import NavSwapCard from "./NavSwapCard";
+import { createClient } from "@/lib/supabase/server";
 
-export function DesktopSidebar() {
+export async function DesktopSidebar() {
+  const supabase = await createClient();
+  
+  const { data : { user }, } = await supabase.auth.getUser();
+
+  if (!user) {
+    return <div className="hidden"></div>
+  }
+
   return (
     <div className="hidden lg:flex flex-col h-full sticky top-0 pt-8">
       <Link href="/" className="text-xl font-bold text-primary font-mono tracking-wider flex-grow">

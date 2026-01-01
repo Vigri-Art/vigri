@@ -1,18 +1,32 @@
+import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { signup } from './actions';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { CardContent, CardHeader } from '@/components/ui/card';
 
 export default function SignupPage() {
     return (
-        <form action={signup}>
-            <label htmlFor="email">Email:</label>
-            <input id="email" name="email" type="email" required />
-            <br></br>
-            <label htmlFor="password">Password:</label>
-            <input id="password" name="password" type="password" required />
-            <br></br>
-            <button type="submit">Sign Up</button>
-            <br></br>
-            <br></br>
-            <p>Already have an account? <a href="/login">Log in here.</a></p>
-        </form>
+        <>
+            <CardHeader>
+                <h2>Sign up for access to events.</h2>
+            </CardHeader>
+            <CardContent>
+                <form action={signup}>
+                    <FieldGroup>
+                        <Field>
+                            <FieldLabel>Email:</FieldLabel>
+                            <Input id="email" name="email" type="email" placeholder="hello@vigri.art" required/>
+                        </Field>
+                        <Field>
+                            <FieldLabel>Password:</FieldLabel>
+                            <Input id="password" name="password" type="password" placeholder="Enter password" required/>
+                        </Field>
+                    </FieldGroup>
+                    <Button type="submit">Sign Up</Button>
+                    <p>Already have an account? <Link className="text-blue-500 hover:text-blue-600 underline" href="/login">Log in here.</Link></p>
+                </form>
+            </CardContent>
+        </>
     );
 }

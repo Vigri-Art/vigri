@@ -3,6 +3,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client'; // Use your client-side Supabase helper
+import { CardContent, CardHeader } from '@/components/ui/card';
+import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 export default function UpdatePasswordPage() {
     const [password, setPassword] = useState('');
@@ -23,7 +27,7 @@ export default function UpdatePasswordPage() {
         if (error) {
             setMessage(`Error updating password: ${error.message}`);
         } else {
-            setMessage('Success! Your password has been updated.');
+            setMessage('Success! Your password has been updated. Redirecting...');
             // Redirect the user to login or a protected page after success
             setTimeout(() => {
                 router.push('/login');
@@ -32,18 +36,24 @@ export default function UpdatePasswordPage() {
     };
 
     return (
-        <form onSubmit={handleUpdate} className="p-4">
-            <h2>Set New Password</h2>
-            <label htmlFor="password">New Password:</label>
-            <input 
-                id="password" 
-                type="password" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-            />
-            <button type="submit">Update Password</button>
-            {message && <p className="mt-2 text-sm">{message}</p>}
-        </form>
+        <>
+            <CardHeader>
+                <h2>Set New Password</h2>
+            </CardHeader>
+            <CardContent>
+                <form onSubmit={handleUpdate}>
+                    <FieldGroup>
+                        <Field>
+                            <FieldLabel>New Password:</FieldLabel>
+                            <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}
+                        required />
+                        </Field>
+                    </FieldGroup>
+                    <Button type="submit">Update Password</Button>
+                    {message && <p className="mt-2 text-sm">{message}</p>}
+                </form>
+            </CardContent>
+        </>
+        
     );
 }
