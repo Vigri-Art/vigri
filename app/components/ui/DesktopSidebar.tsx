@@ -7,8 +7,8 @@ import { ProfileCard } from "./ProfileCard";
 
 export function DesktopSidebar({ user, profile }: {user: User, profile: any}) {
   return (
-    <div className="flex flex-col h-full sticky top-0 pt-8">
-      <Link href="/" className="text-xl font-bold text-primary font-mono tracking-wider">
+    <div className="flex flex-col h-full sticky top-0 pt-16">
+      <Link href="/" className="pl-4 text-xl font-bold text-primary font-mono tracking-wider">
           Vigri
       </Link>
       <ProfileCard user={user} profile={profile}/>

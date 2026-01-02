@@ -15,10 +15,10 @@ export default function ProfileHeader({ user, profile }: {user: User, profile: P
         </ItemMedia>
         <ItemContent>
             <ItemTitle className="mb-2 text-2xl">{profile?.display_name}</ItemTitle>
-            <ItemGroup>
-                <Badge>Early Access</Badge>
+            <span className="">
                 {user?.app_metadata.role === 'admin' && <Badge variant="destructive">Admin</Badge>}
-            </ItemGroup>
+                <Badge>Pre-Alpha User</Badge>
+            </span>
             <ItemDescription className="mt-4 text-xl">Bio</ItemDescription>
             <ItemDescription className="text-l">username</ItemDescription>
         </ItemContent>

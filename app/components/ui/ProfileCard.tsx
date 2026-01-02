@@ -26,7 +26,7 @@ export function ProfileCard({user, profile}: {user: User, profile: any}) {
     console.log(user)
   
     return (
-    <div className="flex w-full max-w-lg flex-col gap-6">
+    <div className="flex w-full max-w-lg flex-col gap-6 my-4">
       <Item variant="outline">
         <ItemMedia>
           <Avatar className="size-10">
